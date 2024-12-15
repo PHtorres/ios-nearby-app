@@ -8,22 +8,23 @@
 import Foundation
 import UIKit
 
-
-class WelcomeView:UIView{
+class WelcomeView: UIView {
+    var didTapButton: (() -> Void?)?
     
-    private let logoImageView:UIImageView = {
-        let image = UIImageView(image: UIImage(named: "logo"))
-        image.contentMode = .scaleAspectFit
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
+    private let logoImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "logo"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
-    
+
     private let welcomeLabel: UILabel = {
         let label = UILabel()
         label.text = "Boas vindas ao Nearby!"
         label.font = Typography.titleXL
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
+        
         return label
     }()
     
@@ -33,6 +34,7 @@ class WelcomeView:UIView{
         label.font = Typography.textMD
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
+        
         return label
     }()
     
@@ -41,6 +43,7 @@ class WelcomeView:UIView{
         label.text = "Veja como funciona:"
         label.font = Typography.textMD
         label.translatesAutoresizingMaskIntoConstraints = false
+ 
         return label
     }()
     
@@ -58,7 +61,8 @@ class WelcomeView:UIView{
         button.backgroundColor = Colors.greenBase
         button.titleLabel?.font = Typography.action
         button.setTitleColor(Colors.gray100, for: .normal)
-        button.layer.cornerRadius = 8
+        button.layer.cornerRadius = 10
+        button.addTarget(self, action: #selector(didTap), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -72,7 +76,7 @@ class WelcomeView:UIView{
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupUI(){
+    private func setupUI() {
         setupTips()
         addSubview(logoImageView)
         addSubview(welcomeLabel)
@@ -81,48 +85,52 @@ class WelcomeView:UIView{
         addSubview(tipsStackView)
         addSubview(startButton)
         
-        setupContrainsts()
+        setupConstraints()
     }
     
-    private func setupContrainsts(){
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             logoImageView.topAnchor.constraint(equalTo: topAnchor, constant: 16),
-            logoImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            logoImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
             logoImageView.widthAnchor.constraint(equalToConstant: 48),
             logoImageView.heightAnchor.constraint(equalToConstant: 48),
             
-            welcomeLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 24),
-            welcomeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            welcomeLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 28),
+            welcomeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
             
-            descriptionLabel.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 16),
-            descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            descriptionLabel.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 12),
+            descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
             
-            subTextForTips.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 24),
-            subTextForTips.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            subTextForTips.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 32),
+            subTextForTips.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            
             
             tipsStackView.topAnchor.constraint(equalTo: subTextForTips.bottomAnchor, constant: 24),
-            tipsStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            tipsStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            tipsStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            tipsStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
             
-            startButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            startButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
             startButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24),
+            startButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            startButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
             startButton.heightAnchor.constraint(equalToConstant: 56)
         ])
     }
     
-    private func setupTips(){
-        guard let icon1 = UIImage(named: "mapIcon") else {return}
-        let tip1 = TipsView(icon: icon1,
-                            title: "Encontre estabelecimentos",
-                            description: "Veja locais perto de você que são parceiros Nearby")
+    @objc
+    private func didTap() {
+        didTapButton?()
+    }
+    
+    private func setupTips() {
+        guard let icon1 = UIImage(named: "mapIcon") else { return }
+        let tip1 = TipsView(icon: icon1, title: "Encontre estabelecimentos", description: "Veja locais perto de você que são parceiros Nearby")
         
         let tip2 = TipsView(icon: UIImage(named: "qrcode") ?? UIImage(),
-                            title: "Ative o cupom com o QR Code",
-                            description: "Escaneie o código do estabelecimento para usar o benefício")
+                            title: "Ative o cupom com QR Code",
+                            description: "Escaneie o código no estabelecimento para usar o benefício")
         
-        let tip3 = TipsView(icon: UIImage(named: "ticket")!,
+        let tip3 = TipsView(icon: UIImage(named: "ticket") ?? UIImage(),
                             title: "Garanta vantagens perto de você",
                             description: "Ative cupons onde estiver, em diferentes tipos de estabelecimento")
         

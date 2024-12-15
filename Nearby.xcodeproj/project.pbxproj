@@ -18,6 +18,11 @@
 		0643286D2D0E1B8B00EBF591 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0643286C2D0E1B8B00EBF591 /* HomeViewController.swift */; };
 		064328702D0E1CA200EBF591 /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0643286F2D0E1CA200EBF591 /* PlaceTableViewCell.swift */; };
 		064328732D0E26EC00EBF591 /* PlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064328722D0E26EC00EBF591 /* PlaceModel.swift */; };
+		064328752D0E9EFF00EBF591 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064328742D0E9EFF00EBF591 /* CategoryModel.swift */; };
+		064328772D0E9FDC00EBF591 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064328762D0E9FDC00EBF591 /* HomeViewModel.swift */; };
+		064328792D0F1E5000EBF591 /* PlaceAnnotationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064328782D0F1E4F00EBF591 /* PlaceAnnotationModel.swift */; };
+		0643287C2D0F499300EBF591 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0643287B2D0F499300EBF591 /* DetailsViewController.swift */; };
+		0643287E2D0F4DD300EBF591 /* WelcomeFlowDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0643287D2D0F4DD300EBF591 /* WelcomeFlowDelegate.swift */; };
 		06B753E12D07E9D60027BBA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B753E02D07E9D60027BBA8 /* AppDelegate.swift */; };
 		06B753E32D07E9D60027BBA8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B753E22D07E9D60027BBA8 /* SceneDelegate.swift */; };
 		06B753E52D07E9D60027BBA8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B753E42D07E9D60027BBA8 /* ViewController.swift */; };
@@ -39,6 +44,11 @@
 		0643286C2D0E1B8B00EBF591 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0643286F2D0E1CA200EBF591 /* PlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewCell.swift; sourceTree = "<group>"; };
 		064328722D0E26EC00EBF591 /* PlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
+		064328742D0E9EFF00EBF591 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
+		064328762D0E9FDC00EBF591 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		064328782D0F1E4F00EBF591 /* PlaceAnnotationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAnnotationModel.swift; sourceTree = "<group>"; };
+		0643287B2D0F499300EBF591 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		0643287D2D0F4DD300EBF591 /* WelcomeFlowDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeFlowDelegate.swift; sourceTree = "<group>"; };
 		06B753DD2D07E9D60027BBA8 /* Nearby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nearby.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06B753E02D07E9D60027BBA8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06B753E22D07E9D60027BBA8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +84,7 @@
 			children = (
 				0643285E2D0DFCAE00EBF591 /* WelcomeView.swift */,
 				064328602D0E022000EBF591 /* WelcomeViewController.swift */,
+				0643287D2D0F4DD300EBF591 /* WelcomeFlowDelegate.swift */,
 			);
 			path = Welcome;
 			sourceTree = "<group>";
@@ -92,6 +103,7 @@
 				0643286E2D0E1C8700EBF591 /* TableViewCell */,
 				0643286A2D0E1B7400EBF591 /* HomeView.swift */,
 				0643286C2D0E1B8B00EBF591 /* HomeViewController.swift */,
+				064328762D0E9FDC00EBF591 /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -108,8 +120,18 @@
 			isa = PBXGroup;
 			children = (
 				064328722D0E26EC00EBF591 /* PlaceModel.swift */,
+				064328742D0E9EFF00EBF591 /* CategoryModel.swift */,
+				064328782D0F1E4F00EBF591 /* PlaceAnnotationModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		0643287A2D0F497B00EBF591 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				0643287B2D0F499300EBF591 /* DetailsViewController.swift */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 		06B753D42D07E9D60027BBA8 = {
@@ -190,6 +212,7 @@
 		06B754012D08F1610027BBA8 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				0643287A2D0F497B00EBF591 /* Details */,
 				064328692D0E1B6000EBF591 /* Home */,
 				0643285D2D0DFC8E00EBF591 /* Welcome */,
 				06B754022D08F16C0027BBA8 /* Splash */,
@@ -276,15 +299,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				064328772D0E9FDC00EBF591 /* HomeViewModel.swift in Sources */,
 				06B753FD2D08EE880027BBA8 /* Colors.swift in Sources */,
 				0643286B2D0E1B7400EBF591 /* HomeView.swift in Sources */,
+				0643287E2D0F4DD300EBF591 /* WelcomeFlowDelegate.swift in Sources */,
 				064328732D0E26EC00EBF591 /* PlaceModel.swift in Sources */,
 				064328612D0E022000EBF591 /* WelcomeViewController.swift in Sources */,
 				06B754002D08EFA70027BBA8 /* NearbyFlowController.swift in Sources */,
 				06B753E52D07E9D60027BBA8 /* ViewController.swift in Sources */,
 				0643286D2D0E1B8B00EBF591 /* HomeViewController.swift in Sources */,
+				064328752D0E9EFF00EBF591 /* CategoryModel.swift in Sources */,
 				06B754042D08F1830027BBA8 /* SplashViewController.swift in Sources */,
 				0643285F2D0DFCAE00EBF591 /* WelcomeView.swift in Sources */,
+				0643287C2D0F499300EBF591 /* DetailsViewController.swift in Sources */,
 				064328662D0E0B4000EBF591 /* UIViewController+ext.swift in Sources */,
 				0643285C2D0DF73D00EBF591 /* TipsView.swift in Sources */,
 				06B753E12D07E9D60027BBA8 /* AppDelegate.swift in Sources */,
@@ -292,6 +319,7 @@
 				06B753E32D07E9D60027BBA8 /* SceneDelegate.swift in Sources */,
 				064328632D0E048900EBF591 /* SplashFlowDelegate.swift in Sources */,
 				064328682D0E143800EBF591 /* Typography.swift in Sources */,
+				064328792D0F1E5000EBF591 /* PlaceAnnotationModel.swift in Sources */,
 				06B754062D08F1EC0027BBA8 /* SplashView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
